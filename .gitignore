@@ -1,0 +1,60 @@
+# ============================================================
+# Particle Lab v2 — .gitignore
+# ============================================================
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv
+.venv/
+venv
+venv/
+**/.venv
+app/backend/.venv
+app/backend/.venv/
+*.egg-info/
+
+# ── Node / Next.js ──
+node_modules/
+.next/
+app/frontend/out/
+*.tsbuildinfo
+
+# ── Build artifacts ──
+dist/
+*.app
+.build_cache/
+AppIcon.iconset/
+*.icns.bak
+
+# ── Runtime data / logs / user output ──
+logs/
+*.log
+runs/
+dataset/
+.streamlit/
+app/data/sessions/
+app/backend/data/uploads/
+app/backend/data/sessions/
+
+# ── Model weights (distributed via GitHub Releases) ──
+*.pt
+*.pth
+basic_pt/
+
+# ── IDE / editor / agent metadata ──
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# ── OS metadata ──
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini

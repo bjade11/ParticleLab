@@ -1,0 +1,21 @@
+# FastAPI / Starlette — 1.0+ 가 multipart parser API 를 바꿔서 우리 monkey-patch 가 무력화됨.
+# 0.4x 대에 핀.
+fastapi>=0.110,<0.116
+starlette>=0.36,<0.46
+uvicorn[standard]>=0.27,<0.35
+python-multipart>=0.0.9,<1.0
+pydantic>=2.6,<3.0
+numpy>=1.26,<3.0
+scipy>=1.11
+Pillow>=10.2
+opencv-python>=4.9
+scikit-image>=0.22
+pandas>=2.0
+python-pptx>=0.6.23
+openpyxl>=3.1
+matplotlib>=3.8
+scikit-learn>=1.3        # DBSCAN (particle_core.spatial)
+# torch 는 setup.sh 가 cu121 인덱스에서 강제 설치하므로 여기선 명시 X (cu13 자동설치 방지).
+ultralytics>=8.4
+# 데스크탑 런처 (launcher.py + pywebview) — macOS 는 pyobjc 자동 dep, Windows 는 EdgeChromium WebView2
+pywebview>=6.0

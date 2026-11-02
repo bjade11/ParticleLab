@@ -15,6 +15,12 @@
 
 사전 설치: Python 3.10+ (PATH 등록), Node.js 18+.
 
+0. **기본 가중치 받기** (저장소에는 포함되지 않음, 약 90MB). 이 저장소의 [Releases](https://github.com/bjade11/ParticleLab/releases) 또는 원본 [LIB-Particle_Lab_v2 v2.0.0 릴리스](https://github.com/edwin0419-ko/LIB-Particle_Lab_v2/releases/tag/v2.0.0)에서 `U-net++.pt`, `yolo_11.pt` 를 내려받아 프로젝트 루트의 `basic_pt/` 폴더에 **확장자를 뗀 이름**으로 넣습니다.
+   ```
+   basic_pt/U-net++
+   basic_pt/yolo_11
+   ```
+   없어도 Watershed 엔진은 동작하며, AI Hybrid 엔진만 사용할 수 없습니다.
 1. `START.bat` 더블클릭. 처음이면 `SETUP.bat` 이 자동 실행되어 venv 생성, PyTorch(NVIDIA GPU 있으면 CUDA 12.1), 패키지 설치, 프런트 빌드까지 약 5~10분.
 2. 브라우저가 `http://localhost:3001` 로 열립니다.
 3. 종료: `STOP.bat`.

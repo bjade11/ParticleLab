@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+/* GmarketSans — primary Korean UI font */
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+}
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+}
+@font-face {
+  font-family: 'GmarketSans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+}
+
+html, body, button, input, select, textarea {
+  font-family: 'GmarketSans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+}
+
+/* ===== Design tokens (Toss-inspired neutral) ===== */
+:root {
+  --c-bg:           #ffffff;
+  --c-bg-soft:      #fafafa;
+  --c-surface:      #ffffff;
+  --c-surface-soft: #fafafa;
+  --c-border:       #f1f1ef;
+  --c-border-soft:  #f5f5f3;
+  --c-border-strong:#e6e6e2;
+  --c-text:         #191919;
+  --c-text-mute:    #6b7280;
+  --c-text-faint:   #9ca3af;
+  --c-ink:          #2c5cff;
+  --c-ink-hover:    #1f48d6;
+  --c-ink-soft:     rgba(44,92,255,0.07);
+  --c-up:           #e8483c;
+  --c-down:         #2c5cff;
+  --c-good:         #009f50;
+  --c-bad:          #e8483c;
+  --c-amber:        #b7791f;
+
+  --shadow-xs:      0 1px 0 rgba(20,22,27,0.025);
+  --shadow-sm:      0 1px 2px rgba(20,22,27,0.03);
+  --shadow-md:      0 2px 6px rgba(20,22,27,0.05);
+  --shadow-pop:     0 6px 18px -8px rgba(44,92,255,0.30);
+
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      14px;
+  --radius-xl:      18px;
+}
+
+/* ===== Base ===== */
+html, body {
+  background: var(--c-bg-soft);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* { font-feature-settings: "tnum", "cv11"; }
+
+::selection { background: rgba(44,92,255,0.16); color: var(--c-text); }
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #d8d8d4;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: #b8b8b4; background-clip: padding-box; border: 2px solid transparent; }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* ===== Range slider ===== */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #e8e8e4;
+  border-radius: 999px;
+}
+input[type="range"]::-moz-range-track {
+  height: 3px;
+  background: #e8e8e4;
+  border-radius: 999px;
+}
+input[type="range"]::-moz-range-progress {
+  height: 3px;
+  background: #191919;
+  border-radius: 999px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 14px;
+  width: 14px;
+  margin-top: -5.5px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #191919;
+  box-shadow: 0 1px 3px rgba(20,22,27,0.15);
+  transition: transform 0.12s ease;
+}
+input[type="range"]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #191919;
+  box-shadow: 0 1px 3px rgba(20,22,27,0.15);
+}
+input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.10); }
+input[type="range"]:focus { outline: none; }
+input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(25,25,25,0.10); }
+input[type="range"]:disabled::-webkit-slider-thumb { border-color: #c8c8c4; cursor: not-allowed; }
+
+/* ===== Checkbox → switch ===== */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: #e0e0dc;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+  outline: none;
+  flex-shrink: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(20,22,27,0.20);
+  transition: left 0.18s ease;
+}
+input[type="checkbox"]:hover { background: #d4d4d0; }
+input[type="checkbox"]:checked { background: #191919; }
+input[type="checkbox"]:checked::after { left: 16px; }
+input[type="checkbox"]:focus-visible { box-shadow: 0 0 0 3px rgba(25,25,25,0.10); }
+input[type="checkbox"]:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ===== Inputs / selects ===== */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+select,
+textarea {
+  background: #ffffff;
+  color: var(--c-text);
+  border-color: var(--c-border-strong) !important;
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+input[type="text"]:hover:not(:disabled),
+input[type="number"]:hover:not(:disabled),
+select:hover:not(:disabled),
+textarea:hover:not(:disabled) { border-color: #b8b8b4 !important; }
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #191919 !important;
+  box-shadow: 0 0 0 3px rgba(25,25,25,0.08);
+}
+
+/* 모달 등에서 사용하는 정사각 체크박스 — 토글 스위치 스타일을 끄고 실제 check 표시. */
+input[type="checkbox"].mod-check {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 4px !important;
+  background: #ffffff !important;
+  border: 1.5px solid #d3d3cb !important;
+  cursor: pointer;
+  position: relative;
+}
+input[type="checkbox"].mod-check::after {
+  content: "" !important;
+  position: absolute !important;
+  display: none !important;
+  left: 4.5px !important;
+  top: 1px !important;
+  width: 5px !important;
+  height: 10px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: solid #ffffff !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg) !important;
+  box-shadow: none !important;
+}
+input[type="checkbox"].mod-check:hover { border-color: #b8b8b4 !important; background: #ffffff !important; }
+input[type="checkbox"].mod-check:checked {
+  background: #191919 !important;
+  border-color: #191919 !important;
+}
+input[type="checkbox"].mod-check:checked::after { display: block !important; }
+input[type="checkbox"].mod-check:disabled {
+  background: #f5f5f3 !important;
+  border-color: #e6e6e2 !important;
+  cursor: not-allowed;
+}
+
+/* 인라인 knob 값 입력 — 슬라이더 옆에 살짝 들어가는 작은 숫자 입력.
+   슬라이더 손잡이와 동시에 강조될 필요가 없어 ring 을 제거. */
+input.knob-num { border-color: transparent !important; }
+input.knob-num:hover { border-color: var(--c-border-strong) !important; }
+input.knob-num:focus {
+  border-color: #191919 !important;
+  box-shadow: none !important;
+}
+input.knob-num::-webkit-outer-spin-button,
+input.knob-num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ===== Buttons ===== */
+button {
+  transition:
+    background-color 0.14s ease,
+    border-color 0.14s ease,
+    color 0.14s ease,
+    box-shadow 0.16s ease,
+    transform 0.08s ease,
+    opacity 0.14s ease;
+  letter-spacing: -0.005em;
+}
+button:not(:disabled):active { transform: translateY(0.5px); }
+button:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(25,25,25,0.12); }
+
+a { transition: background-color 0.14s ease, color 0.14s ease, border-color 0.14s ease; }
+
+/* ===== Code / kbd ===== */
+code, kbd, .font-mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  background: #ffffff;
+  border: 1px solid var(--c-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  color: var(--c-text-mute);
+}
+
+/* ===== Reusable utility classes ===== */
+@layer components {
+  .app-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+  }
+  .app-card-hover:hover { border-color: var(--c-border-strong); }
+
+  .btn-primary {
+    background: #191919;
+    color: #ffffff;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+  }
+  .btn-primary:hover:not(:disabled) { background: #2c2c2c; }
+  .btn-primary:disabled {
+    background: #ededea;
+    color: #b8b8b4;
+    cursor: not-allowed;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid var(--c-border-strong);
+    background: var(--c-surface);
+    color: var(--c-text-mute);
+  }
+  .chip-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+  .chip-good { color: var(--c-good); border-color: rgba(0,159,80,0.30); background: rgba(0,159,80,0.04); }
+  .chip-bad  { color: var(--c-bad);  border-color: rgba(232,72,60,0.30); background: rgba(232,72,60,0.04); }
+  .chip-mute { color: var(--c-text-mute); }
+
+  .dropzone {
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--c-border-strong);
+    background: var(--c-surface);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .dropzone:hover { border-color: #191919; background: #fafafa; color: #191919; }
+  .dropzone-active { border-color: #191919 !important; background: #f4f4f1 !important; color: #191919 !important; }
+  .dropzone-filled { border-style: solid; border-color: var(--c-border-strong); background: #fafaf8; }
+
+  .toss-row {
+    border-bottom: 1px solid var(--c-border);
+  }
+  .toss-row:last-child { border-bottom: none; }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+@keyframes pulseSoft { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(0,159,80,0.45); }
+  70% { box-shadow: 0 0 0 6px rgba(0,159,80,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,159,80,0); }
+}
+
+@keyframes plabSlide { 0% { left: -33%; } 100% { left: 100%; } }
+
+.fade-in { animation: fadeIn 0.22s ease-out; }
+.dot-pulse { animation: pulseSoft 1.6s ease-in-out infinite; }
+.ring-pulse { animation: pulseRing 1.8s ease-out infinite; }
+
+/* Resize handle for right column */
+.resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -6px;
+  width: 12px;
+  cursor: col-resize;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.resize-handle::before {
+  content: "";
+  width: 2px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--c-border-strong);
+  transition: background 0.15s ease, height 0.15s ease;
+}
+.resize-handle:hover::before,
+.resize-handle.is-active::before {
+  background: #191919;
+  height: 56px;
+}
+body.is-resizing { cursor: col-resize !important; user-select: none; }
+body.is-resizing * { cursor: col-resize !important; }
